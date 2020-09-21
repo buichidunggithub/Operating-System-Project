@@ -1,0 +1,37 @@
+Đồ án 2
+Nhóm thực hiện:
+Bùi Chí Dũng - 1712364
+Phạm Đặng Đăng Khoa - 1712533
+
+						PHẦN 1
+Yêu cầu: Tìm hiểu về Linux kernel module và hệ thống quản lý file và device trong linux, giao tiếp giữa tiến trình ở user space và kernel space
+- Viết một module dùng để tạo ra số ngẫu nhiên.
+- Module này sẽ tạo một character device để cho phép các tiến trình ở user space có thể open và read các số ngẫu nhiên
+
+Tổ chức file:
+
+"RandomNumber.c" :tạo module sinh số nguyên ngẫu nhiên.
+"testPro.c" :chương trình ở user-space open và đọc số ngẫu nhiên được sinh ra.
+"Makefile" :biên dịch 2 tập tin trên.
+
+Cách sử dụng:
+- Đưa các file "Makefile", "RandomNumber.c" và testRandNum.c vào cùng thư  mục
+- Mở Terminal tại thư mục đó và chạy lệnh "make", sau đó ta đã tạo ra file RandomNumber.ko
+- Chạy lệnh "sudo insmod RandomNumber.ko" để load module này vào kernel, và dùng lệnh lsmod để kiểm tra module đã được load hay chưa
+- Chạy lệnh "sudo ./test" nhiều lần để chạy ứng dụng "testPro" và kiểm tra kết quả
+Mỗi lần chạy ta sẽ nhận được một số khác nhau. 
+
+Chi tiết sẽ được giải thích trong báo cáo
+
+						PHẦN 2
+
+Yêu cầu: Chương trình hook vào một system call: 
+- syscall open => Ghi vào dmesg tên tiến trình mở file và tên file được mở
+- syscall write => Ghi vào dmesg tên tiến trình, tên file bị ghi và số byte được ghi
+
+Tổ chức file:
+"HookSysCall.c": chương trình hook syscall open và write
+"Makefile": file build kernel module
+
+Cách sử dụng: chi tiết trong file báo cáo report.docx
+---Hết---
